@@ -31,12 +31,12 @@ public class BankAccount {
         this.name = name;
     }
 
-    public boolean withdraw(double amount) {
+    public boolean withdraw(double amount) throws IllegalArgumentException {
         if (amount <= 0) {
             throw new IllegalArgumentException("Amount must be positive!");
         }
 
-        if (balance - amount > 0) {
+        if (balance - amount >= 0) {
             balance -= amount;
             return true;
         }
