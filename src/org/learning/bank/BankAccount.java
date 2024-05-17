@@ -1,18 +1,19 @@
 package org.learning.bank;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 public class BankAccount {
     private int accountNumber;
     private String name;
-    private double balance;
+    private BigDecimal balance;
     
     public BankAccount(String name) {
         Random random = new Random();
         this.accountNumber = random.nextInt(1, 1000);
 
         this.name = name;
-        this.balance = 0;
+        this.balance = BigDecimal.valueOf(0.0);
     }
 
     public int getAccountNumber() {
@@ -23,7 +24,7 @@ public class BankAccount {
         return name;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
@@ -36,8 +37,8 @@ public class BankAccount {
             throw new IllegalArgumentException("Amount must be positive!");
         }
 
-        if (balance - amount >= 0) {
-            balance -= amount;
+        if (balance.subtract(BigDecimal.valueOf(amount)).compareTo(BigDecimal.valueOf(0.0)) >= 0) {
+            balance = balance.subtract(BigDecimal.valueOf(amount));
             return true;
         }
 
@@ -48,7 +49,7 @@ public class BankAccount {
         if (amount <= 0) {
             throw new IllegalArgumentException("Amount must be positive!");
         } else {
-            balance += amount;
+            balance = balance.add(BigDecimal.valueOf(amount));
         }
     }
 
