@@ -42,7 +42,7 @@ public class Product {
     }
 
     public BigDecimal getPriceWithVat() {
-        return price.add( (price.multiply(BigDecimal.valueOf(vat))).divide(BigDecimal.valueOf(100)));
+        return price.add((price.multiply(BigDecimal.valueOf(vat))).divide(BigDecimal.valueOf(100)));
     }
 
     public int getVat() {
