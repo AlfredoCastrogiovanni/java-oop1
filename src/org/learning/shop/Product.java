@@ -1,12 +1,13 @@
 package org.learning.shop;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 public class Product {
     private int productCode;
     private String name;
     private String description;
-    private double price;
+    private BigDecimal price;
     private int vat;
 
     public Product(String name, String description, double price, int vat) {
@@ -15,7 +16,7 @@ public class Product {
 
         this.name = name;
         this.description = description;
-        this.price = price;
+        this.price = BigDecimal.valueOf(price);
         this.vat = vat;
     }
 
@@ -36,12 +37,12 @@ public class Product {
         return description;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public double getPriceWithVat() {
-        return price + (price * vat / 100);
+    public BigDecimal getPriceWithVat() {
+        return price.add( (price.multiply(BigDecimal.valueOf(vat))).divide(BigDecimal.valueOf(100)));
     }
 
     public int getVat() {
@@ -58,7 +59,7 @@ public class Product {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.price = BigDecimal.valueOf(price);
     }
 
     public void setVat(int vat) {

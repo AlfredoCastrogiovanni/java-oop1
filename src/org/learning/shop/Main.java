@@ -6,5 +6,6 @@ public class Main {
 
         System.out.println(product1.getFullName());
         System.out.println(product1.getProductCode());
+        System.out.println(product1.getPriceWithVat());
     }
 }
